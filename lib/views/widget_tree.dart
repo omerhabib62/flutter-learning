@@ -17,11 +17,11 @@ class WidgetTree extends StatelessWidget {
         actions: [
           ValueListenableBuilder(
             valueListenable: isDarkModeNotifier,
-            builder: (context, selectedPage, child) {
+            builder: (context, isDarkTheme, child) {
               Widget finalIcon =
-                  isDarkModeNotifier.value
-                      ? const Icon(Icons.dark_mode)
-                      : const Icon(Icons.light_mode);
+                  isDarkTheme
+                      ? const Icon(Icons.light_mode)
+                      : const Icon(Icons.dark_mode);
               return IconButton(
                 icon: finalIcon,
                 onPressed: () {

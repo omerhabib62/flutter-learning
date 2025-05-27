@@ -18,14 +18,13 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return ValueListenableBuilder(
       valueListenable: isDarkModeNotifier,
-      builder: (context, value, child) {
+      builder: (context, isDarkMode, child) {
         return MaterialApp(
           debugShowCheckedModeBanner: false,
           theme: ThemeData(
             colorScheme: ColorScheme.fromSeed(
               seedColor: Colors.teal,
-              brightness:
-                  isDarkModeNotifier.value ? Brightness.dark : Brightness.light,
+              brightness: isDarkMode ? Brightness.dark : Brightness.light,
             ),
           ),
           home: WidgetTree(),
