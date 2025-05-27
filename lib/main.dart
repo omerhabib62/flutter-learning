@@ -35,6 +35,12 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: Text('Flutter Mapp'), centerTitle: true),
+      body:
+          currentIndex == 0
+              ? Center(child: Text('Home Page', style: TextStyle(fontSize: 24)))
+              : Center(
+                child: Text('Profile Page', style: TextStyle(fontSize: 24)),
+              ),
       bottomNavigationBar: NavigationBar(
         destinations: [
           NavigationDestination(icon: Icon(Icons.home), label: 'Home'),
