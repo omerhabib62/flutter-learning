@@ -17,19 +17,18 @@ class WidgetTree extends StatelessWidget {
         actions: [
           ValueListenableBuilder(
             valueListenable: isDarkModeNotifier,
-            builder:
-                (context, selectedPage, child) => IconButton(
-                  icon:
-                      isDarkModeNotifier.value
-                          ? const Icon(Icons.dark_mode_rounded)
-                          : const Icon(Icons.dark_mode_outlined),
-                  onPressed: () {
-                    // Toggle dark mode or theme settings
-                    print('Dark mode toggled');
-                    isDarkModeNotifier.value = !isDarkModeNotifier.value;
-                    // Navigate to settings page or show settings dialog
-                  },
-                ),
+            builder: (context, selectedPage, child) {
+              Widget finalIcon =
+                  isDarkModeNotifier.value
+                      ? const Icon(Icons.dark_mode)
+                      : const Icon(Icons.light_mode);
+              return IconButton(
+                icon: finalIcon,
+                onPressed: () {
+                  isDarkModeNotifier.value = !isDarkModeNotifier.value;
+                },
+              );
+            },
           ),
         ],
       ),
