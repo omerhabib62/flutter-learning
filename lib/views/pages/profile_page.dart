@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app/data/notifiers.dart';
+import 'package:flutter_app/views/pages/welcome_page.dart';
 
 class ProfilePage extends StatefulWidget {
   const ProfilePage({super.key});
@@ -8,55 +10,23 @@ class ProfilePage extends StatefulWidget {
 }
 
 class _ProfilePageState extends State<ProfilePage> {
-  TextEditingController controller = TextEditingController();
-  bool? isChecked = false;
-  bool isSwitched = false;
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(20.0),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          TextField(
-            controller: controller,
-            decoration: InputDecoration(
-              labelText: 'Name',
-              border: OutlineInputBorder(),
+      padding: EdgeInsets.all(20.0),
+      child: ListTile(
+        title: Text('Logout'),
+        onTap: () {
+          selectedPageNotifier.value = 0; // Reset to the first page
+          Navigator.pushReplacement(
+            context,
+            MaterialPageRoute(
+              builder: (context) {
+                return WelcomePage();
+              },
             ),
-            onEditingComplete: () {
-              setState(() {});
-            },
-          ),
-          Text(controller.text),
-          Checkbox(
-            tristate: true,
-            value: isChecked,
-            onChanged: (bool? value) {
-              setState(() {
-                isChecked = value;
-              });
-            },
-          ),
-          CheckboxListTile(
-            tristate: true,
-            value: isChecked,
-            title: Text('Click Me'),
-            onChanged: (bool? value) {
-              setState(() {
-                isChecked = value;
-              });
-            },
-          ),
-          Switch(
-            value: isSwitched,
-            onChanged: (bool value) {
-              setState(() {
-                isSwitched = value;
-              });
-            },
-          ),
-        ],
+          );
+        },
       ),
     );
   }
